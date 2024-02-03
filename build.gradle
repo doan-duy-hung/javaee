@@ -1,0 +1,40 @@
+plugins {
+    id 'java'
+    id 'war'
+}
+
+group 'com.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    junitVersion = '5.9.2'
+}
+
+war {
+    archiveFileName = 'demo.war'
+}
+
+sourceCompatibility = '11'
+targetCompatibility = '11'
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+dependencies {
+    implementation('jakarta.enterprise:jakarta.enterprise.cdi-api:3.0.0')
+    implementation('jakarta.ejb:jakarta.ejb-api:4.0.0')
+    implementation('jakarta.ws.rs:jakarta.ws.rs-api:3.0.0')
+    implementation('org.eclipse.persistence:org.eclipse.persistence.jpa:3.0.2')
+
+    testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
+}
+
+test {
+    useJUnitPlatform()
+}
