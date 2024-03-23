@@ -15,7 +15,7 @@ ext {
 }
 
 war {
-    archiveFileName = 'demo.war'
+    archiveFileName = 'main.war'
 }
 
 sourceCompatibility = '11'
