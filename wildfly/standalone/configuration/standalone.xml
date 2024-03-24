@@ -136,11 +136,10 @@
                     <security user-name="sa" password="sa"/>
                 </datasource>
                 <datasource jndi-name="java:/PostgresDS" pool-name="PostgresDS">
-					<!-- <connection-url>jdbc:postgresql://localhost:5432/postgres</connection-url> -->
-                    <connection-url>jdbc:postgresql://host.docker.internal:5432/postgres</connection-url>
+					<connection-url>jdbc:postgresql://${env.DB_URL:localhost}:5432/postgres</connection-url>
                     <driver-class>org.postgresql.Driver</driver-class>
                     <driver>postgresql</driver>
-                    <security user-name="postgres" password="123456"/>
+                    <security user-name="${env.DB_USER:postgres}" password="${env.DB_PASSWORD:postgres}"/>
                     <validation>
                         <valid-connection-checker class-name="org.jboss.jca.adapters.jdbc.extensions.postgres.PostgreSQLValidConnectionChecker"/>
                         <validate-on-match>true</validate-on-match>
