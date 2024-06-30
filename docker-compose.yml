@@ -1,7 +1,7 @@
 services:
   be:
     build:
-      context: .be
+      context: .
     container_name: be
     ports:
       - "8080:8080"
